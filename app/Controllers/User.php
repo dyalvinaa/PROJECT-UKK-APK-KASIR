@@ -9,7 +9,11 @@ class User extends BaseController
 {
     public function dashboardAdmin()
     {
-    return view('user/dashboard-admin');
+        $data =[
+            'pendapatan_harian' => $this->penjualan->getPendapatanHarian(),
+            'dataStok' => $this->produk->getStokNo1()
+        ];
+    return view('user/dashboard-admin', $data);
     }
     public function dashboardKasir()
     {
@@ -55,13 +59,14 @@ class User extends BaseController
         {
             $validasiForm = [
                 'nama_user' => 'required',
-                'username' => 'required',
+                'username' => 'required|is_unique[tbl_user.username]',
                 'password' => 'required',
                 'level' => 'required'
             ];
-    
+
             //ini menandakan apakah tombol daftar diklik
             if ($this->validate($validasiForm)) {
+                
                 //menampung data dari form registrasi
                 $dataUser = [
                     'nama_user' => $this->request->getPost('nama_user'),
@@ -116,7 +121,6 @@ class User extends BaseController
         $this->user->update($this->request->getVar('id_user'), $data);
         return redirect()->to('data-user')->with('pesan', 'Data User Berhasil Ditambah');
     }
-
     public function logout()
     {
         session()->destroy();

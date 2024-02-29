@@ -49,7 +49,7 @@ class Produk extends BaseController
                 'is_unique' => 'Nama produk sudah ada silahkan gunakan yang lain',
             ],
             'harga_beli' => [
-                'required' => ' HArga beli Tidak boleh kosong!',
+                'required' => ' Harga beli Tidak boleh kosong!',
             ],
             'stok' => [
                 'required' => ' stok Tidak boleh kosong!',

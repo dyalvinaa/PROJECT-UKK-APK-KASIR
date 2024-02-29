@@ -18,8 +18,8 @@
             <form ation="<?= site_url('transaksi-penjualan'); ?>" class="row g-3" method="POST">
               <div class="col-md-3">
                 <div class="form-floating">
-                  <input type="text" class="form-control" id="floatingName" name="no_faktur" value="<?= $noFaktur; ?>">
-                  <input type="hidden" class="form-control" id="floatingName" name="no_faktur" value="<?= $noFaktur; ?>">
+                  <input type="text" class="form-control" id="floatingName" name="no_faktur" value="<?= $noFaktur; ?>"disabled>
+                  <input type="hidden" class="form-control" id="floatingName" name="no_faktur" value="<?= $noFaktur; ?>" >
                   <label for="floatingName">No. Faktur </label>
                 </div>
               </div>
@@ -32,8 +32,12 @@
               </div>
               <div class="col-md-3">
                 <div class="form-floating">
-                  <input type="text" class="form-control" id="floatingName" name="waktu"
-                    value="<?php echo date("h:i:sa"); ?>" disabled>
+                <input type="text" class="form-control" id="floatingName" name="waktu" value="<?php 
+                      date_default_timezone_set('Asia/Jakarta');
+                      echo date(" H:i:s "); ?>"disabled>
+                  <input type="hidden" class="form-control" id="floatingName" name="waktu" value="<?php 
+                      date_default_timezone_set('Asia/Jakarta');
+                      echo date(" H:i:s "); ?>">
                   <label for="floatingName">Waktu</label>
                 </div>
               </div>
@@ -71,7 +75,7 @@
                 <button type="submit" class="btn sm btn-success"><i class="bi bi-cart-fill"></i></button>
               </div>
 
-              <div class="col-md-12">
+              <div class="col-md-6">
                 <table class="table table-sm table-striped table-bordered text-center">
                   <thead>
                     <tr>
@@ -79,6 +83,7 @@
                       <th>Nama Produk</th>
                       <th>Qty</th>
                       <th>Total</th>
+                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -98,6 +103,12 @@
                           </td>
                           <td>
                             <?= number_format($detail['total_harga'], 0, ',', '.'); ?>
+                          </td>
+                          <td>
+                          <form action="<?= site_url('hapus-produk/' . $detail['id_detail']); ?>" method="post" class="d-inline">
+                        <?= csrf_field() ?>
+                        <button type="submit" class="btn bi-trash-fill"
+                          onclick="return confirm('Apakah Anda yakin?')"></button>
                           </td>
                         </tr>
 
@@ -128,7 +139,7 @@
           </div>
           <div class="col-md-3">
             <div class="form-floating">
-              <input type="text" class="form-control" id="txtbayar" name="txtbayar">
+              <input type="text" class="form-control " id="txtbayar" name="txtbayar">
               <label for="floatingName">Bayar </label>
             </div>
           </div>

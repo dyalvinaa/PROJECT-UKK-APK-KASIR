@@ -78,4 +78,12 @@ class Kategori extends BaseController
         $this->kategori->update($this->request->getVar('id_kategori'), $data);
         return redirect()->to('kategori-produk')->with('pesan', 'Data Berhasil Dihapus');
     }
+    public function cek_keterkaitan_data($id)
+    {
+        // Lakukan pemeriksaan keterkaitan data
+        $keterkaitan = $this->kategori->cekKeterkaitan($id);
+
+        // Kirim respon ke AJAX
+        return $this->response->setJSON(['has_keterkaitan' => $keterkaitan]);
+    }
 }

@@ -16,25 +16,21 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <div class="mt-4 col">
-              <?php if (session()->getFlashdata('pesan')): ?>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  <?= session()->getFlashdata('pesan'); ?>
-                </div>
-              <?php endif ?>
+            <div class="row mt-3">
+              <div class="mt-4 col">
+                <?php if (session()->getFlashdata('pesan')): ?>
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <?= session()->getFlashdata('pesan'); ?>
+                  </div>
+                <?php endif ?>
+              </div>
             </div>
-            <div class="mt-4 col-3">
+            <div class=" col-3">
               <a class="btn btn-primary" href="/tambah-satuan">
                 <span class="text">Tambah</span>
               </a>
             </div>
-
-            <?php if (session()->getFlashdata('info')): ?>
-              <div class="alert alert-success" role="alert">
-                <?= session()->getFlashdata('info'); ?>
-              </div>
-            <?php endif ?>
 
             <!-- Table with stripped rows -->
             <table class="table datatable">
@@ -74,6 +70,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
   </section>
 

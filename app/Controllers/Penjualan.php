@@ -86,5 +86,10 @@ public function simpanPembayaran(){
     // Mengarahkan pengguna kembali ke halaman transaksi penjualan
     return redirect()->to('transaksi');
 }
+public function hapusProduk($id)
+    {
+        $this->detail->delete($id);
+        return redirect()->to('transaksi')->with('pesan', 'Produk Berhasil Dihapus');
+    }
 
 }

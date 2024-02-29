@@ -51,9 +51,9 @@
                     </td>
                     <td>
                       <a href=<?=site_url('/edit-kategori/'.$row['id_kategori']); ?>><i class="btn btn-primary bi bi-pencil-square"></i></a>
+                     
                       <form action="<?= site_url('hapus-kategori/' . $row['id_kategori']); ?>" method="post" class="d-inline">
                         <?= csrf_field() ?>
-
                         <button type="submit" class="btn btn-danger bi-trash-fill"
                           onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" id="hapusKategori"
                           data-id="<?= $row['id_kategori']; ?>"></button>

@@ -25,7 +25,7 @@
             <?php endif ?>
           </div>
             <div class="mt-4 col-3">
-              <a class="btn btn-danger" href="<?= site_url('/pdf'); ?>">
+              <a class="btn btn-danger" href="<?= site_url('/pdf/generate-penjualan'); ?>">
                 <span class="text">Download PDF</span>
               </a>
             </div>

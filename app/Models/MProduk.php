@@ -59,7 +59,7 @@ class MProduk extends Model
     public function getAllLaporanPenjualan()
     {
         $produk = new MPenjualan();
-        $produk->select('tbl_penjualan.id_penjualan, tbl_penjualan.no_faktur,
+        $produk->select('tbl_penjualan.id_penjualan, tbl_penjualan.no_faktur, tbl_penjualan.tgl_penjualan,
          tbl_penjualan.total, tbl_penjualan.id_user');
         return $produk->findAll();
     }
@@ -89,14 +89,9 @@ class MProduk extends Model
         return $builder->get()->getRowArray();
     }
 
-        public function getLaporanproduk(){
-            $produk = NEW Mproduk;
-            $queryProduk=$produk->query("CALL sp_lihat_laporan()")->getResult();
-            return $queryProduk;
-        }
         public function getStok()
     {
-        $produk = new Mproduk();
+        $produk = new MProduk();
         $produk->select('tbl_produk.id_produk, tbl_produk.nama_produk, tbl_produk.harga_beli, tbl_produk.harga_jual, tbl_produk.stok');
         $produk->orderBy('tbl_produk.stok', 'ASC');
         return $produk->findAll();
@@ -107,6 +102,11 @@ class MProduk extends Model
         $queryproduk=$produk->query("CALL sp_lihat_produk()")->getResult();
         return $queryproduk;
         }
-        
-
+        public function getStokNo1()
+        {
+            $produk = new MProduk();
+            $produk->select('tbl_produk.kode_produk,tbl_produk.id_produk,tbl_produk.nama_produk,tbl_produk.harga_beli,tbl_produk.harga_jual,tbl_produk.stok');
+            $produk->where('tbl_produk.stok = 0' );
+            return $produk->findAll();
+        }
 }

@@ -5,19 +5,10 @@
 
     <li class="nav-item">
 
-      <?php if (session()->get('level') == 'admin'): ?>
-        <a class="nav-link " href="<?= site_url('dashboard-admin'); ?>">
+        <a class="nav-link collapsed" href="<?= site_url('dashboard-admin'); ?>">
           <i class="bi bi-speedometer"></i>
           <span>Dashboard</span>
-        </a>
-      <?php endif; ?>
-
-      <?php if (session()->get('level') == 'kasir'): ?>
-        <a class="nav-link " href="<?= site_url('dashboard-kasir'); ?>">
-          <i class="bi bi-speedometer"></i>
-          <span>Dashboard</span>
-        </a>
-      <?php endif; ?>
+      </a>
 
 
     </li><!-- End Dashboard Nav -->
@@ -57,13 +48,6 @@
     <!-- <a class="nav-link collapsed" href="<?= site_url('data-pembelian'); ?>">
           <i class="bi bi-cart3"></i><span>Pembelian</span></i>
         </a> -->
-        <?php if (session()->get('level') == 'kasir'): ?>
-    <li class="nav-heading">Pengguna</li>
-
-    <a class="nav-link collapsed" href="<?= site_url('data-user'); ?>">
-      <i class="bi bi-person-circle"></i><span>Data Pengguna</span></i>
-    </a>
-    <?php endif; ?>
         <?php if (session()->get('level') == 'admin'): ?>
     <li class="nav-heading">Pengguna</li>
 

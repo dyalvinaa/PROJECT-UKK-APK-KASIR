@@ -47,6 +47,11 @@ class MPenjualan extends Model
 
         return $this->where(['id_penjualan' => $id])->first();
     }
+    public function getLaporanPenjualan(){
+        $penjualan = NEW MPenjualan;
+        $queryPenjualan=$penjualan->query("CALL sp_lihat_laporan()")->getResult();
+        return $queryPenjualan;
+    }
 
     public function generateTransactionNumber()
     {
@@ -97,5 +102,8 @@ class MPenjualan extends Model
         $penjualan->where("YEAR(TanggalPenjualan)", $tahun);
         return $penjualan->find();
     }
-    
+    public function getPendapatanHarian(){
+        $today = date('Y-m-d');
+        return $this->where('DATE(tgl_penjualan)',$today)->select('SUM(total) AS pendapatan_harian')->get()->getRow()->pendapatan_harian;
+    }
 }

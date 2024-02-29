@@ -21,34 +21,30 @@
 </head>
 
 <body>
-    <h1 style="text-align: center;">Laporan Stok Produk</h1>
+    <h1 style="text-align: center;">Laporan Penjualan</h1>
     <table>
         <thead>
             <tr>
                 <th>No</th>
-                <th>Nama Produk</th>
-                <th>Stok</th>
-                <th>Harga Jual</th>
-                <th>Harga Beli</th>
+                <th>No. Faktur</th>
+                <th>Tanggal Penjualan</th>
+                <th>Total</th>
             </tr>
         </thead>
         <tbody>
         <?php $no = 1; ?>
-                <?php foreach ($listProduk as $row): ?>
+                <?php foreach ($listPenjualan as $row): ?>
                   <tr>
                     <td>
                       <?= $no++ ?>
                     <td>
-                      <?= $row['nama_produk']; ?>
+                      <?= $row['no_faktur']; ?>
                     </td>
                     <td>
-                      <?= $row['harga_beli']; ?>
+                      <?= $row['tgl_penjualan']; ?>
                     </td>
                     <td>
-                      <?= $row['harga_jual']; ?>
-                    </td>
-                    <td>
-                      <?= $row['stok']; ?>
+                      <?= $row['total']; ?>
                     </td>
                   </tr>
                 <?php endforeach; ?>

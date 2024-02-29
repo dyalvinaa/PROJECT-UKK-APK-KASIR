@@ -18,7 +18,6 @@ $routes->get('/profile', 'User::profile');
 
 //dashboard
 $routes->get('/dashboard-admin', 'User::dashboardAdmin',['filter'=>'otentifikasi']);
-$routes->get('/dashboard-kasir', 'User::dashboardKasir',['filter'=>'otentifikasi']);
 
 //user
 $routes->get('/data-user', 'User::dataUser');
@@ -32,7 +31,8 @@ $routes->get('/tambah-kategori', 'Kategori::tambahKategori');
 $routes->post('/simpan-kategori', 'Kategori::simpanKategori');
 $routes->get('/edit-kategori/(:num)', 'Kategori::editKategori/$1');
 $routes->post('/perbarui-kategori', 'Kategori::simpanEditKategori');
-$routes->get('/hapus-kategori/(:num)', 'Kategori::hapusKategori/$1');
+$routes->post('/hapus-kategori/(:num)', 'Kategori::hapusKategori/$1');
+$routes->get('/cek-kategori-digunakan/(:segment)', 'Kategori::cek_keterkaitan_data/$1');
 
 //satuan
 $routes->get('/satuan-produk', 'Satuan::satuanProduk');
@@ -42,6 +42,7 @@ $routes->get('/edit-satuan/(:num)', 'Satuan::editSatuan/$1');
 $routes->post('/perbarui-satuan', 'Satuan::simpanEditSatuan');
 $routes->get('/edit-satuan', 'Satuan::simpanEditSatuan');
 $routes->post('/hapus-satuan/(:num)', 'Satuan::hapusSatuan/$1');
+$routes->get('/cek-satuan-digunakan/(:segment)', 'Satuan::cek_keterkaitan_data/$1');
 
 //produk
 $routes->get('/data-produk', 'Produk::dataProduk');
@@ -56,13 +57,15 @@ $routes->get('/transaksi', 'Penjualan::index',['filter'=>'otentifikasi']);
 $routes->post('/transaksi','Penjualan::simpanPenjualan');
 $routes->get('/pembayaran','Penjualan::index',['filter'=>'otentifikasi']);
 $routes->get('/pembayaran-transaksi','Penjualan::simpanPembayaran');
+$routes->post('/hapus-produk/(:num)', 'Satuan::hapusProduk/$1');
 
 //laporan
 $routes->get('/laporan-stok', 'Produk::dataLaporan');
-$routes->get('/laporan-penjualan', 'Produk::dataLaporanPenjualan');
 $routes->get('/pdf', 'PdfController::index');
 $routes->get('/pdf/generate', 'PdfController::generate');
+$routes->get('/pdf/generate/(:num)', 'PdfController::generate/$1');
 
-//validasi
-$routes->get('/cek-satuan-digunakan/(:segment)', 'Satuan::cek_keterkaitan_data/$1');
+$routes->get('/laporan-penjualan', 'Produk::dataLaporanPenjualan');
+$routes->get('/pdf-penjualan', 'PdfController::pdfPenjualan');
+$routes->get('/pdf/generate-penjualan', 'PdfController::generatePenjualan');
 

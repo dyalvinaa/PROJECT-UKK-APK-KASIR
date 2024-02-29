@@ -49,7 +49,7 @@ class Satuan extends BaseController
             //proses simpan ke DB
             $this->satuan->insert($data);
             
-            return redirect()->to(site_url('satuan-produk'))->with('info', '<div class="alert alert-success">Data berhasil disimpan</div>');
+            return redirect()->to(site_url('satuan-produk'))->with('pesan', 'Data berhasil disimpan');
 }
 
     public function hapusSatuan($id)

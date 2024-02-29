@@ -46,4 +46,14 @@ class MKategori extends Model
 
         return $this->where(['id_kategori' => $id])->first();
     }
+    public function cekKeterkaitan($id)
+    {
+        // Contoh: Cek apakah data dengan ID yang diberikan digunakan di tabel lain
+        $builder = $this->db->table('tbl_produk');
+        $builder->where('id_kategori', $id);
+        $count = $builder->countAllResults();
+
+        // Jika terdapat keterkaitan, kembalikan true, jika tidak, kembalikan false
+        return ($count > 0);
+    }
 }
