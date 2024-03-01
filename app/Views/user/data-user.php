@@ -23,7 +23,7 @@
                 <?= session()->getFlashdata('pesan'); ?>
               </div>
             <?php endif ?>
-              <a class="btn btn-primary" href="<?=site_url('daftar');?>">
+              <a class="btn btn-secondary" href="<?=site_url('daftar');?>">
                 <span class="text">Tambah</span>
               </a>
             </div>
@@ -59,8 +59,8 @@
                       <?= $row['level']; ?>
                     </td>
                     <td>
-                      <a href=<?=site_url('/edit-user/'.$row['id_user']); ?>><i class="bi bi-pencil-square"></i></a>
-                      <a href=<?=site_url('/hapus-user/'.$row['id_user']); ?>><i class="bi bi bi-trash-fill"></i></a>
+                      <a href=<?=site_url('/edit-user/'.$row['id_user']); ?>><i class="btn btn-outline-secondary bi bi-pencil-square"></i></a>
+                      <a href=<?=site_url('/hapus-user/'.$row['id_user']); ?>><i class="btn btn-outline-danger bi-trash-fill"></i></a>
                     </td>
                   </tr>
                   <?php endforeach; ?>

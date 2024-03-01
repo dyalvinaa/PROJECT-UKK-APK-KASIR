@@ -26,7 +26,7 @@
           </div>
 
             <div class="mt-4 col-3">
-              <a class="btn btn-primary" href="/tambah-kategori">
+              <a class="btn btn-secondary" href="<?=site_url('tambah-kategori');?>">
                 <span class="text">Tambah</span>
               </a>
             </div>
@@ -50,11 +50,11 @@
                       <?= $row['nama_kategori']; ?>
                     </td>
                     <td>
-                      <a href=<?=site_url('/edit-kategori/'.$row['id_kategori']); ?>><i class="btn btn-primary bi bi-pencil-square"></i></a>
+                      <a href=<?=site_url('edit-kategori/'.$row['id_kategori']); ?>><i class="btn btn-outline-secondary bi bi-pencil-square"></i></a>
                      
                       <form action="<?= site_url('hapus-kategori/' . $row['id_kategori']); ?>" method="post" class="d-inline">
                         <?= csrf_field() ?>
-                        <button type="submit" class="btn btn-danger bi-trash-fill"
+                        <button type="submit" class="btn btn-outline-danger bi-trash-fill"
                           onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" id="hapusKategori"
                           data-id="<?= $row['id_kategori']; ?>"></button>
                       </form>

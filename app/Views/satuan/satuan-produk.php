@@ -27,7 +27,7 @@
               </div>
             </div>
             <div class=" col-3">
-              <a class="btn btn-primary" href="/tambah-satuan">
+              <a class="btn btn-secondary" href="<?=site_url('tambah-satuan');?>">
                 <span class="text">Tambah</span>
               </a>
             </div>
@@ -52,11 +52,11 @@
                     </td>
                     <td>
                       <a href="<?= site_url('edit-satuan/' . $row['id_satuan']); ?>"
-                        class="btn btn-primary bi bi-pencil-square"></a>
+                        class="btn btn-outline-secondary bi bi-pencil-square"></a>
                       <form action="<?= site_url('hapus-satuan/' . $row['id_satuan']); ?>" method="post" class="d-inline">
                         <?= csrf_field() ?>
 
-                        <button type="submit" class="btn btn-danger bi-trash-fill"
+                        <button type="submit" class="btn btn-outline-danger bi-trash-fill"
                           onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')" id="hapusSatuan"
                           data-id="<?= $row['id_satuan']; ?>"></button>
                       </form>

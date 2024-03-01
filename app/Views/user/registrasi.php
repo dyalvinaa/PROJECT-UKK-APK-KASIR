@@ -41,7 +41,7 @@
               <div class="card mb-3 mt-3">
                 <div class="card-body">
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+                    <h5 class="card-title text-center pb-0 fs-4">Buat Akun</h5>
                   </div>
 
                   <form class="row g-3 needs-validation" action="<?= site_url('daftar')?>" method="post">
@@ -50,21 +50,21 @@
                   <div class="col-12">
                     <label for="nama" class="form-label">Nama Pengguna</label>
                     <input type="text" name="nama_user" class="form-control" id="nama_user" required>
-                    <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                    <div class="invalid-feedback">Nama Pengguna wajib diisi.</div>
                   </div>
 
                   <div class="col-12">
                     <label for="username" class="form-label">Username</label>
                     <div class="input-group has-validation">
                       <input type="text" name="username" class="form-control" id="username" required>
-                      <div class="invalid-feedback">Please choose a username.</div>
+                      <div class="invalid-feedback">Username wajib diisi.</div>
                     </div>
                   </div>
 
                   <div class="col-12">
                     <label for="yourPassword" class="form-label">Password</label>
                     <input type="password" name="password" class="form-control" id="password" required>
-                    <div class="invalid-feedback">Please enter your password!</div>
+                    <div class="invalid-feedback">Password wajib diisi</div>
                   </div>
 
                   <div class="col-12">
@@ -81,7 +81,7 @@
                     <div class="invalid-feedback">You must agree before submitting.</div>
                   </div>
                   <div class="col-12">
-                    <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                    <button class="btn btn-secondary w-100" type="submit">Submit</button>
                   </div>
                   </form>
 

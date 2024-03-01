@@ -25,7 +25,7 @@
             <?php endif ?>
           </div>
             <div class="mt-4 col-3">
-              <a class="btn btn-primary" href="<?= site_url('tambah-produk'); ?>">
+              <a class="btn btn-secondary" href="<?= site_url('tambah-produk'); ?>">
                 <span class="text">Tambah</span>
               </a>
             </div>
@@ -73,11 +73,11 @@
                       <?= $row['stok']; ?>
                     </td>
                     <td>
-                      <a href="<?= site_url('edit-produk/' . $row['id_produk']); ?>" class="btn btn-primary bi bi-pencil-square"></a>
+                      <a href="<?= site_url('edit-produk/' . $row['id_produk']); ?>" class="btn btn-outline-secondary bi bi-pencil-square"></a>
                       <form action="/produk/<?= $row['id_produk']; ?>" method="POST" class="d-inline">
                         <?= csrf_field(); ?>
                         <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn btn-danger bi-trash-fill"
+                        <button type="submit" class="btn btn-outline-danger bi-trash-fill"
                           onClick="return confirm('Apakah anda yakin?');"></button>
                       </form>
                     </td>

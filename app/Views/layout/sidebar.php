@@ -41,9 +41,9 @@
     <a class="nav-link collapsed" href="<?= site_url('laporan-stok'); ?>">
       <i class="bi bi-coin"></i><span>Stok Produk</span></i>
     </a>
-    <a class="nav-link collapsed" href="<?= site_url('laporan-penjualan'); ?>">
+    <!-- <a class="nav-link collapsed" href="">
       <i class="bi bi-coin"></i><span>Penjualan</span></i>
-    </a>
+    </a> -->
     <?php endif; ?>
     <!-- <a class="nav-link collapsed" href="<?= site_url('data-pembelian'); ?>">
           <i class="bi bi-cart3"></i><span>Pembelian</span></i>

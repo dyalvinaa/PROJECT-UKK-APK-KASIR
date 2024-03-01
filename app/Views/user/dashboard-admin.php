@@ -38,25 +38,6 @@
           </div>
           <!-- end card pendapatan hari ini-->
 
-          <!-- card penjualan bulan ini -->
-          <div class="col-xxl-5 col-md-6">
-            <div class="card info-card sales-card">
-              <div class="card-body">
-                <h5 class="card-title">Penjualan Hari ini</h5>
-                <div class="d-flex align-items-center">
-                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-cart"></i>
-                  </div>
-                  <div class="ps-2">
-                    <h6>Rp.
-                      <?php echo number_format($pendapatan_harian, 0, ',', '.'); ?>
-                    </h6>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
           <!-- End penjualan bulan ini Card -->
           <div class="card col-lg-10">
           <div class="pagetitle">

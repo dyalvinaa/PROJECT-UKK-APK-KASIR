@@ -12,14 +12,16 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-          <h1 class="card-title">Penjualan</h1>
+            <h1 class="card-title">Penjualan</h1>
             <div class="mt-2  col">
             </div>
             <form ation="<?= site_url('transaksi-penjualan'); ?>" class="row g-3" method="POST">
               <div class="col-md-3">
                 <div class="form-floating">
-                  <input type="text" class="form-control" id="floatingName" name="no_faktur" value="<?= $noFaktur; ?>"disabled>
-                  <input type="hidden" class="form-control" id="floatingName" name="no_faktur" value="<?= $noFaktur; ?>" >
+                  <input type="text" class="form-control" id="floatingName" name="no_faktur" value="<?= $noFaktur; ?>"
+                    disabled>
+                  <input type="hidden" class="form-control" id="floatingName" name="no_faktur"
+                    value="<?= $noFaktur; ?>">
                   <label for="floatingName">No. Faktur </label>
                 </div>
               </div>
@@ -32,12 +34,12 @@
               </div>
               <div class="col-md-3">
                 <div class="form-floating">
-                <input type="text" class="form-control" id="floatingName" name="waktu" value="<?php 
-                      date_default_timezone_set('Asia/Jakarta');
-                      echo date(" H:i:s "); ?>"disabled>
-                  <input type="hidden" class="form-control" id="floatingName" name="waktu" value="<?php 
-                      date_default_timezone_set('Asia/Jakarta');
-                      echo date(" H:i:s "); ?>">
+                  <input type="text" class="form-control" id="floatingName" name="waktu" value="<?php
+                  date_default_timezone_set('Asia/Jakarta');
+                  echo date(" H:i:s "); ?>" disabled>
+                  <input type="hidden" class="form-control" id="floatingName" name="waktu" value="<?php
+                  date_default_timezone_set('Asia/Jakarta');
+                  echo date(" H:i:s "); ?>">
                   <label for="floatingName">Waktu</label>
                 </div>
               </div>
@@ -104,18 +106,12 @@
                           <td>
                             <?= number_format($detail['total_harga'], 0, ',', '.'); ?>
                           </td>
-                          <td>
-                          <form action="<?= site_url('hapus-produk/' . $detail['id_detail']); ?>" method="post" class="d-inline">
-                        <?= csrf_field() ?>
-                        <button type="submit" class="btn bi-trash-fill"
-                          onclick="return confirm('Apakah Anda yakin?')"></button>
-                          </td>
                         </tr>
 
                       <?php endforeach;
                     else: ?>
                       <tr>
-                        <td colspan="4">Tidak ada produk</td>
+                        <td colspan="5">Tidak ada produk</td>
                       </tr>
 
                     <?php endif; ?>
@@ -126,14 +122,15 @@
         </div>
       </div>
     </div>
-
+    </form>
     <div class="card md-12">
       <div class="card-body">
         <h1 class="card-title">Pembayaran</h1>
         <div class="row g-3">
           <div class="col-md-3">
             <div class="form-floating">
-              <input type="text" class="form-control" value="<?= number_format($totalHarga, 0, ',', '.'); ?>" id="total" name="total">
+              <input type="text" class="form-control" value="<?= number_format($totalHarga, 0, ',', '.'); ?>" id="total"
+                name="total">
               <label for="floatingName">Total </label>
             </div>
           </div>
@@ -150,8 +147,8 @@
             </div>
           </div>
           <div class="text-end">
-                <a button type="submit" class="btn sm btn-success" href="<?=site_url('pembayaran')?>" >Simpan</a>
-              </div>
+            <button id="btnBayar" type="submit" class="btn btn-success" onclick="redirectToRoute()">Bayar</button>
+          </div>
         </div>
       </div>
     </div>
@@ -160,27 +157,40 @@
 </main><!-- End #main -->
 
 <script>
+
+  function redirectToRoute() {
+    window.location.href = '<?= site_url('pembayaran'); ?>'
+  }
+
+</script>
+
+<script>
+
   document.addEventListener('DOMContentLoaded', function () {
     // Ambil elemen-elemen yang diperlukan
     var txtBayar = document.getElementById('txtbayar');
+    var btnBayar = document.getElementById('btnBayar');
     var kembali = document.getElementById('kembali');
     var totalHarga = <?= $totalHarga ?>; // Ambil total harga dari controller dan diteruskan ke view
 
-    // Tambahkan event listener untuk memantau perubahan pada input bayar
+    btnBayar.disabled = true;
+    // tambahkan event listener untuk memantau perubahan pada input bayar
     txtBayar.addEventListener('input', function () {
-      // Ambil nilai yang dibayarkan
+      // ambil nilai yang dibayarkan
       var bayar = parseFloat(txtBayar.value);
 
-      // Hitung kembaliannya
       var kembalian = bayar - totalHarga;
 
-      // Tampilkan kembaliannya pada input kembali
+      // tampilkan kembaliannya pada input kembali
       if (kembalian >= 0) {
-        kembali.value = kembalian.toFixed(2).replace(/(\.00)+$/, ''); // Menampilkan hingga 2 digit desimal
+        kembali.value = kembalian.toFixed(2).replace(/(\.00)+$/, ''); // menampilkan hingga 2 digit desimal
+        btnBayar.disabled = false;
       } else {
-        kembali.value = '0'; // Jika kembalian negatif, tampilkan '0.00'
+        kembali.value = '0' // jika kembalian negatif, tampilkan 0.00
+        btnBayar.disabled = true;
       }
     });
+
   });
 </script>
 

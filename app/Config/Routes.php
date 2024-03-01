@@ -57,7 +57,6 @@ $routes->get('/transaksi', 'Penjualan::index',['filter'=>'otentifikasi']);
 $routes->post('/transaksi','Penjualan::simpanPenjualan');
 $routes->get('/pembayaran','Penjualan::index',['filter'=>'otentifikasi']);
 $routes->get('/pembayaran-transaksi','Penjualan::simpanPembayaran');
-$routes->post('/hapus-produk/(:num)', 'Satuan::hapusProduk/$1');
 
 //laporan
 $routes->get('/laporan-stok', 'Produk::dataLaporan');
