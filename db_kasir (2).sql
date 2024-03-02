@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2024 at 05:13 PM
+-- Generation Time: Mar 02, 2024 at 02:03 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -25,6 +25,12 @@ DELIMITER $$
 --
 -- Procedures
 --
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_lihat_laporan` ()   BEGIN
+SELECT tbl_penjualan.id_penjualan, tbl_penjualan.no_faktur, tbl_penjualan.tgl_penjualan, tbl_penjualan.total
+FROM tbl_penjualan
+ORDER BY tbl_penjualan.tgl_penjualan DESC;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_lihat_produk` ()   SELECT tbl_produk.id_produk, tbl_produk.kode_produk, tbl_produk.nama_produk, tbl_produk.harga_beli, tbl_produk.harga_jual, tbl_satuan.nama_satuan, tbl_kategori.nama_kategori, tbl_produk.stok
 FROM tbl_produk
 JOIN tbl_satuan ON tbl_satuan.id_satuan=tbl_produk.id_satuan
@@ -62,7 +68,20 @@ INSERT INTO `tbl_detail_penjualan` (`id_detail`, `id_penjualan`, `id_produk`, `q
 (2, 28, 28, 2, 6000),
 (3, 29, 28, 1, 3000),
 (4, 30, 28, 2, 6000),
-(5, 31, 28, 1, 3000);
+(5, 31, 28, 1, 3000),
+(6, 32, 29, 1, 3000),
+(7, 33, 28, 1, 3000),
+(8, 33, 29, 2, 6000),
+(9, 34, 28, 2, 6000),
+(10, 35, 28, 2, 6000),
+(11, 36, 28, 3, 9000),
+(13, 37, 28, 2, 6000),
+(14, 37, 28, 1, 3000),
+(15, 37, 28, 1, 3000),
+(18, 39, 31, 50, 900000),
+(19, 40, 28, 1, 3000),
+(20, 40, 28, 2, 6000),
+(21, 41, 28, 2, 6000);
 
 --
 -- Triggers `tbl_detail_penjualan`
@@ -97,7 +116,7 @@ INSERT INTO `tbl_kategori` (`id_kategori`, `nama_kategori`) VALUES
 (2, 'Minuman'),
 (4, 'Makanan'),
 (8, 'Deterjen'),
-(10, 'Obat-obatan');
+(13, 'Alat tulis kantor');
 
 -- --------------------------------------------------------
 
@@ -118,10 +137,10 @@ CREATE TABLE `tbl_penjualan` (
 --
 
 INSERT INTO `tbl_penjualan` (`id_penjualan`, `no_faktur`, `tgl_penjualan`, `total`, `id_user`) VALUES
-(28, 'SCDPS2402270001', '2024-02-27', 15000, 7),
-(29, 'SCDPS2402270002', '2024-02-27', 3000, 7),
-(30, 'SCDPS2402270003', '2024-02-27', 6000, 7),
-(31, 'SCDPS2402270004', '2024-02-27', 3000, 7);
+(38, 'SCDPS2403010001', '2024-03-01', 9000, 8),
+(39, 'SCDPS2403020002', '2024-03-02', 900000, 8),
+(40, 'SCDPS2403020003', '2024-03-02', 9000, 8),
+(41, 'SCDPS2403020004', '2024-03-02', 6000, 8);
 
 -- --------------------------------------------------------
 
@@ -145,8 +164,9 @@ CREATE TABLE `tbl_produk` (
 --
 
 INSERT INTO `tbl_produk` (`id_produk`, `kode_produk`, `nama_produk`, `harga_beli`, `harga_jual`, `id_satuan`, `id_kategori`, `stok`) VALUES
-(28, 'PRD006', 'Indomie', 3000, 3000, 7, 2, 103),
-(29, 'PRD007', 'Aqua', 2000, 3000, 10, 2, 150);
+(28, 'PRD006', 'Indomie', 3000, 3000, 7, 2, 83),
+(29, 'PRD007', 'Aqua Gelas', 2000, 3000, 10, 2, 46),
+(31, 'PRD008', 'Rinso', 15000, 18000, 16, 8, 0);
 
 -- --------------------------------------------------------
 
@@ -164,10 +184,13 @@ CREATE TABLE `tbl_satuan` (
 --
 
 INSERT INTO `tbl_satuan` (`id_satuan`, `nama_satuan`) VALUES
-(7, 'unit'),
-(9, 'liter'),
-(10, 'kardus'),
-(12, 'Sachet');
+(7, 'Unit'),
+(9, 'Liter'),
+(10, 'Boks'),
+(12, 'Sachet'),
+(14, 'Berat (Kg)'),
+(15, 'Dus'),
+(16, 'Satuan/Kemasan');
 
 -- --------------------------------------------------------
 
@@ -246,31 +269,31 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_detail_penjualan`
 --
 ALTER TABLE `tbl_detail_penjualan`
-  MODIFY `id_detail` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_detail` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tbl_kategori`
 --
 ALTER TABLE `tbl_kategori`
-  MODIFY `id_kategori` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_kategori` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `tbl_penjualan`
 --
 ALTER TABLE `tbl_penjualan`
-  MODIFY `id_penjualan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id_penjualan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `tbl_produk`
 --
 ALTER TABLE `tbl_produk`
-  MODIFY `id_produk` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_produk` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `tbl_satuan`
 --
 ALTER TABLE `tbl_satuan`
-  MODIFY `id_satuan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_satuan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

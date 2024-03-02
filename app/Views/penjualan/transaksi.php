@@ -76,7 +76,7 @@
               <div class="text-end">
                 <button type="submit" class="btn sm btn-success"><i class="bi bi-cart-fill"></i></button>
               </div>
-
+              </form>
               <div class="col-md-6">
                 <table class="table table-sm table-striped table-bordered text-center">
                   <thead>
@@ -85,7 +85,6 @@
                       <th>Nama Produk</th>
                       <th>Qty</th>
                       <th>Total</th>
-                      <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -122,7 +121,7 @@
         </div>
       </div>
     </div>
-    </form>
+    
     <div class="card md-12">
       <div class="card-body">
         <h1 class="card-title">Pembayaran</h1>
@@ -159,7 +158,7 @@
 <script>
 
   function redirectToRoute() {
-    window.location.href = '<?= site_url('pembayaran'); ?>'
+    window.location.href = '<?= site_url('pembayaran-transaksi'); ?>'
   }
 
 </script>
